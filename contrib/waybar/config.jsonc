@@ -1,0 +1,28 @@
+// Add the two module names to modules-left/center/right and merge these blocks
+// into your waybar config. They need a Nerd Fonts v3 font for the icons
+// (for example JetBrainsMono Nerd Font).
+{
+  // Music: a play/pause glyph on the bar, track details in the tooltip.
+  "custom/music": {
+    "exec": "notify-rs waybar --icon-only",   // or: notify-rs waybar --max-len 40
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "notify-rs center toggle",    // open the notification center
+    "on-click-middle": "notify-rs toggle",    // play / pause
+    "on-scroll-up": "notify-rs vol +5",
+    "on-scroll-down": "notify-rs vol -5"
+  },
+
+  // Bell: 󰂚 when empty, 󱅫 when something is waiting, 󰂛 under Do Not Disturb (count in the tooltip).
+  // The text is always "icon<space>", which keeps waybar from clipping the glyph.
+  "custom/notifications": {
+    "exec": "notify-rs bell",                 // or: notify-rs bell --hide-empty
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "notify-rs center toggle",
+    "on-click-right": "notify-rs dnd toggle",
+    "on-click-middle": "notify-rs clear"
+  }
+}

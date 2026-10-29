@@ -1,0 +1,19 @@
+# systemd user unit. Install as ~/.config/systemd/user/notify-rs.service, then
+#   systemctl --user daemon-reload && systemctl --user enable --now notify-rs
+# It needs WAYLAND_DISPLAY in the systemd user environment; most session
+# starters do that for you (UWSM, `dbus-update-activation-environment --systemd
+# WAYLAND_DISPLAY` in your compositor's startup). Without that, start the daemon
+# from the compositor config instead: `exec-once = notify-rs daemon`.
+[Unit]
+Description=notify-rs notification center
+PartOf=graphical-session.target
+After=graphical-session.target
+StartLimitIntervalSec=0
+
+[Service]
+ExecStart=/usr/local/bin/notify-rs daemon
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=graphical-session.target
