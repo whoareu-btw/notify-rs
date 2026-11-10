@@ -1,0 +1,31 @@
+/* Classes set by `notify-rs waybar`: playing, paused, none (module is empty)
+   and by `notify-rs bell`: empty, has, dnd, offline, plus `open` while the panel is shown. */
+
+#custom-music,
+#custom-notifications {
+  padding: 0 10px;
+}
+
+#custom-music.paused {
+  opacity: 0.6;
+}
+
+#custom-notifications.empty {
+  opacity: 0.6;
+}
+
+#custom-notifications.has {
+  color: #e5c07b;
+}
+
+#custom-notifications.dnd {
+  opacity: 0.6;
+}
+
+#custom-notifications.offline {
+  color: #e5484d;
+}
+
+#custom-notifications.open {
+  background: rgba(255, 255, 255, 0.08);
+}
